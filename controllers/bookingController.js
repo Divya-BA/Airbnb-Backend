@@ -50,3 +50,31 @@ exports.getBookings = async (req, res) => {
     });
   }
 };
+// Cancel a booking
+exports.cancelBooking = async (req, res) => {
+  try {
+    const userData = req.user;
+    const bookingId = req.params.bookingId;
+
+    const booking = await Booking.findOne({
+      _id: bookingId,
+      user: userData.id,
+    });
+
+    if (!booking) {
+      return res.status(404).json({
+        error: "Booking not found or you are not authorized to cancel it.",
+      });
+    }
+
+    await Booking.deleteOne({ _id: bookingId });
+
+    res.status(200).json({ message: "Booking canceled successfully" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal server error",
+      error: err,
+    });
+  }
+};
