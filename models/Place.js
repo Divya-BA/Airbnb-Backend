@@ -19,7 +19,7 @@ const placeSchema = new mongoose.Schema({
     type: String,
   },
   perks: [{ type: String }],
-  extraInfo: {
+  guestAccess: {
     type: String,
   },
   maxGuests: {

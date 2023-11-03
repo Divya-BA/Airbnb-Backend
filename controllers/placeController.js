@@ -10,7 +10,7 @@ exports.addPlace = async (req, res) => {
       addedPhotos,
       description,
       perks,
-      extraInfo,
+      guestAccess,
       maxGuests,
       price,
     } = req.body;
@@ -21,7 +21,7 @@ exports.addPlace = async (req, res) => {
       photos: addedPhotos,
       description,
       perks,
-      extraInfo,
+      guestAccess,
       maxGuests,
       price,
     });
@@ -61,7 +61,7 @@ exports.updatePlace = async (req, res) => {
       addedPhotos,
       description,
       perks,
-      extraInfo,
+      guestAccess,
       maxGuests,
       price,
     } = req.body;
@@ -74,7 +74,7 @@ exports.updatePlace = async (req, res) => {
         photos: addedPhotos,
         description,
         perks,
-        extraInfo,
+        guestAccess,
         maxGuests,
         price,
       });
