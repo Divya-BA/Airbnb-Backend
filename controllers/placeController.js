@@ -129,11 +129,12 @@ exports.singlePlace = async (req, res) => {
 exports.searchPlaces = async (req, res) => {
   try {
     const searchword = req.params.key;
-
+    const guests = req.query.guests || 0;
     if (searchword === "") return res.status(200).json(await Place.find());
 
     const searchMatches = await Place.find({
       address: { $regex: searchword, $options: "i" },
+      maxGuests: { $gte: guests },
     });
 
     res.status(200).json(searchMatches);
