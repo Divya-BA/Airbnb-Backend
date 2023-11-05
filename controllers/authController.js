@@ -22,7 +22,7 @@ exports.forgotPassword = async (req, res) => {
 
     var mailOptions = {
       from: process.env.EMAIL,
-      to: "recipient@example.com",
+      to:user.email,
       subject: "Reset Password Link",
       text: `${process.env.CLIENT_URL}/reset-password/${user._id}/${token}`,
     };
